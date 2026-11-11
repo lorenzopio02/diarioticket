@@ -19,6 +19,13 @@ st.markdown("""
     <div class="main-header">DIARIO INTERVENTI HELP DESK - INAIL</div>
 """, unsafe_allow_html=True)
 
+# Selezione manuale di data e ora
+col1, col2 = st.columns(2)
+with col1:
+    data_intervento = st.date_input("Data intervento", value=datetime.now())
+with col2:
+    ora_intervento = st.time_input("Ora intervento", value=datetime.now())
+
 ticket = st.text_input("Numero Ticket (facoltativo)")
 richiesta = st.text_area("1. Richiesta ricevuta (cosa ha segnalato l'utente)")
 azioni = st.text_area("2. Cosa ho fatto (passaggi eseguiti)")
@@ -28,6 +35,6 @@ if st.button("Salva Intervento", type="primary"):
     if not (richiesta or azioni or soluzione):
         st.warning("Compila almeno uno dei campi principali prima di salvare.")
     else:
-        # Ottiene data e ora correnti
-        timestamp = datetime.now().strftime("%d/%m/%Y alle %H:%M")
-        st.success(f"Intervento registrato con successo il {timestamp}!")
+        data_formattata = data_intervento.strftime("%d/%m/%Y")
+        ora_formattata = ora_intervento.strftime("%H:%M")
+        st.success(f"Intervento registrato con successo per il {data_formattata} alle {ora_formattata}!")
