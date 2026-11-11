@@ -27,4 +27,4 @@ if st.button("Salva Intervento", type="primary"):
     if not (richiesta or azioni or soluzione):
         st.warning("Compila almeno uno dei campi principali prima di salvare.")
     else:
-        st.success("Intervento registrato con successo!")
+        st.success("Intervento registrato con successo!") 
